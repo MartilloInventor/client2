@@ -102,8 +102,6 @@ The pom.xml in the GitHub repository tells us that the main class relative to th
 
 _edu.webdev.CoursesClientRequest_
 
-Next we rewrite the CoursesClientRequest.java in various languages that are commonly used by web developers.
-
 All the real work of this program is done in the following method.
 
     static void sendGetRequest(String s) throws RuntimeException {
@@ -132,7 +130,7 @@ All the real work of this program is done in the following method.
     
 Do you understand it?
 
-
+Next we rewrite the CoursesClientRequest.java in various languages that are commonly used by web developers.
 
 
 
