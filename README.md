@@ -2,7 +2,7 @@
 
 **Problem Description**
 
-In problem set 2 we build a simple client that uses the coursesapi and test the node.js web server. This simple client will generate the same HTTP requests as courseinfotest.sh which can be found at the following location.
+In problem set 2 we build a simple client that uses the coursesapi and tests the node.js web server. This simple client will generate the same HTTP requests as courseinfotest.sh which can be found at the following location.
 
 https://github.com/MartilloInventor/coursesapi/blob/master/courseinfotest.sh
 
@@ -93,6 +93,46 @@ Under add framework choose: JSON Processing, Java EE verion Java EE 7, and maven
 Now replace the automatically generated pom.xml with the needed pom.xml.
 
 See the pom.xml in the github coursesclient repository.
+
+https://github.com/MartilloInventor/coursesclient/blob/master/pom.xml
+
+Click on the java directory in the project explorer window pane and create the main class specified by the pom.xml
+
+The pom.xml in the GitHub repository tells us that the main class relative to the java directory is the following.
+
+_edu.webdev.CoursesClientRequest_
+
+Next we rewrite the CoursesClientRequest.java in various languages that are commonly used by web developers.
+
+All the real work of this program is done in the following method.
+
+    static void sendGetRequest(String s) throws RuntimeException {
+        logger.debug( "argument: {}", s );
+
+        if (s == null) {
+            s = "";
+        }
+
+        try {
+            WebResource webResource = client.resource( applicationServiceURI + s );
+            ClientResponse response = webResource.accept( "application/json" )
+                    .get( ClientResponse.class );
+            if (response.getStatus() != 200) {
+                throw new RuntimeException( "Failed : HTTP error code : "
+                        + response.getStatus() );
+            }
+            List<String> slist = response.getEntity( new GenericType<List<String>>() {
+            } );
+
+            System.out.println( slist );
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+Do you understand it?
+
+
 
 
 
